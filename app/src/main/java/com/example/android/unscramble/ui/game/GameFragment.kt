@@ -21,6 +21,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -166,8 +167,11 @@ class GameFragment : Fragment() {
 * Skips the current word without changing the score.
 */
     private fun onSkipWord() {
+        var currentWord = viewModel.displayedWord
+        var toast = Toast.makeText(requireContext() , currentWord , Toast.LENGTH_SHORT).show()
         if (viewModel.nextWord()) {
             setErrorTextField(false)
+
         } else {
             showFinalScoreDialog()
         }
